@@ -19,8 +19,7 @@ const NetflixShowContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
-        let netflix_show = body.netflix_show
-        setNetflixShow(netflix_show)
+        setNetflixShow(body)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
