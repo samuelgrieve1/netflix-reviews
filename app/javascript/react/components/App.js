@@ -1,7 +1,17 @@
 import React from 'react'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
+
+import NetflixShowContainer from './NetflixShowContainer'
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/netflix_shows/:id" component={NetflixShowContainer} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App
+
