@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  root 'netflix_shows#index'
+  root 'homes#index'
+  get '/netflix_shows/:id', to: "homes#index"
+  
   devise_for :users
 
-  resources :netflix_shows, only: [:index]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :netflix_shows, only: [:show]
+    end
+  end
 end
