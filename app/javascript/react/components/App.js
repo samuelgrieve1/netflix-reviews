@@ -9,6 +9,7 @@ export const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={NetflixIndexContainer}/>
+        <Route exact path="/netflix_shows" component={NetflixIndexContainer} />
         <Route exact path="/netflix_shows/:id" component={NetflixShowContainer} />
       </Switch>
     </BrowserRouter>
