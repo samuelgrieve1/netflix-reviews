@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 
+import NetflixTile from './NetflixTile'
+
 const NetflixIndexContainer = (props) => {
   const [shows, setShows] = useState([])
 
@@ -24,15 +26,16 @@ const NetflixIndexContainer = (props) => {
   
   let showtiles = shows.map((show) => {
     return(
-      <li key={show.id}>
-        {show.title}
-      </li>
+      < NetflixTile
+        key = {show.id}
+        title = {show.title}
+      />
     )
   })
 
   return(
     <div>
-      <h2>Netflix Shows</h2>
+      <h4>Netflix Shows</h4>
       {showtiles}
     </div>
   )
