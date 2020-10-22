@@ -20,10 +20,10 @@ const NetflixShowContainer = (props) => {
       .then(response => response.json())
       .then(body => {
         setNetflixShow(body)
+        debugger
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
-
   return (
     < NetflixShowTile 
       id={netflixShow.id}
