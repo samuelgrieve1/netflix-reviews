@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/netflix_shows', to: "homes#index"
   get '/netflix_shows/:id', to: "homes#index"
+  get '/netflix_shows/:id/add_review', to: "homes#index"
   
   devise_for :users
 

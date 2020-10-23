@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import NetflixShowTile from './NetflixShowTile'
 import NetflixReviewTile from './NetflixReviewTile'
+import ReviewFormContainer from './NetflixFormContainer'
 
 const NetflixShowContainer = (props) => {
   const[netflixShow, setNetflixShow] = useState({})
@@ -24,6 +25,30 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
+  const addNewReview = (props) => {
+    fetch(`/api/v1/netflix_shows/${id}`, {
+      method: 'POST',
+      body: JSON.stringify(props)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(props => {
+      setReviews([
+        ...reviews,
+        props,
+      ]);
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  };
   
   let netflixReviewArray = []
   let netflixNoReviewMessage = ""
@@ -66,6 +91,8 @@ const NetflixShowContainer = (props) => {
       <h3>Average Rating: {getAvgRating()}</h3>
       <h3>Reviews: {netflixNoReviewMessage}</h3>
       {netflixReviewArray}
+
+      <ReviewFormContainer addNewReview={addNewReview} />
     </div>
   )
 }
