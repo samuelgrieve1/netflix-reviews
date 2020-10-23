@@ -1,6 +1,6 @@
 class Api::V1::NetflixShowsController < ApiController
   def index
-    render json: NetflixShow.all, each_serializer: NetflixSerializer
+    render json: NetflixShow.all
   end
   
   def show
