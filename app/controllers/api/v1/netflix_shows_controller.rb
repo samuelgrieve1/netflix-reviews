@@ -4,6 +4,6 @@ class Api::V1::NetflixShowsController < ApiController
   end
   
   def show
-    render json: NetflixShow.find(params[:id])
+    render json: NetflixShow.find(params[:id]), serializer: NetflixShowSerializer
   end
 end
