@@ -1,11 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
 
-  def new
-    render json: NetflixShow.find(params[:id])
-    render json: Review.find(param[:id])
-  end
-
   def create
+    binding.pry
+    # look at params, get show object so that review can belong to a show
     new_review = Review.new(review_params)
 
     if new_review.save

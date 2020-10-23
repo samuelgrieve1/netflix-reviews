@@ -27,7 +27,7 @@ const NetflixShowContainer = (props) => {
   }, [])
 
   const addNewReview = (props) => {
-    fetch(`/api/v1/netflix_shows/${id}`, {
+    fetch(`/api/v1/netflix_shows/${id}/reviews`, {
       method: 'POST',
       body: JSON.stringify(props)
     })
