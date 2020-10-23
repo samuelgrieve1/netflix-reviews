@@ -48,7 +48,7 @@ const NetflixShowContainer = (props) => {
       netflixShow.reviews.forEach((review) => {
         counter += review.rating
       })
-      avgReviewRating = counter / netflixShow.reviews.length
+      avgReviewRating = Math.round(counter / netflixShow.reviews.length)
     } else {
       avgReviewRating = "No ratings yet."
     }

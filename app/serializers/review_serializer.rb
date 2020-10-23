@@ -1,4 +1,4 @@
-class Api::V1::ReviewSerializer < ActiveModel::Serializer
+class ReviewSerializer < ActiveModel::Serializer
   attributes :id, :comment, :rating
 
   belongs_to :user, if: :current_user?
