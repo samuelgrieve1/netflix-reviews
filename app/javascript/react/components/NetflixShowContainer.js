@@ -6,6 +6,7 @@ import ReviewFormContainer from './ReviewFormContainer'
 
 const NetflixShowContainer = (props) => {
   const[netflixShow, setNetflixShow] = useState({})
+  const[reviews, setReviews] = useState({})
 
   useEffect(() => {
     let id = props.match.params.id
@@ -24,12 +25,19 @@ const NetflixShowContainer = (props) => {
         setNetflixShow(body)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
+      
+  }, []
+  )
 
-  const addNewReview = (props) => {
-    fetch(`/api/v1/netflix_shows/${id}/reviews`, {
+  const addNewReview = (formData) => {
+    fetch(`/api/v1/netflix_shows/${props.match.params.id}/reviews`, {
       method: 'POST',
-      body: JSON.stringify(props)
+      body: JSON.stringify(formData),
+      credentials: 'same-origin',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
     })
     .then(response => {
       if (response.ok) {
