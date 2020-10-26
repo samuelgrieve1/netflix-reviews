@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/netflix_shows/:id', to: "homes#index"
   get '/users/:id', to: "homes#index"
   
-
   namespace :api do
     namespace :v1 do
       resources :netflix_shows, only: [:index, :show]
