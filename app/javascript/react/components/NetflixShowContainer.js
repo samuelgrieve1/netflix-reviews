@@ -25,6 +25,36 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+  
+  let netflixReviewArray = []
+  let netflixNoReviewMessage = ""
+  if (netflixShow.reviews) {
+    netflixReviewArray = netflixShow.reviews.map((review) => {
+      return(
+        < NetflixReviewTile
+          key={review.id}
+          comment={review.comment}
+          rating={review.rating}
+        />
+      )
+    })
+  } else {
+    netflixNoReviewMessage = "No reviews yet."
+  }
+
+  let avgReviewRating = ""
+  const getAvgRating = () => {
+    if (netflixShow.reviews) {
+      let counter = 0
+      netflixShow.reviews.forEach((review) => {
+        counter += review.rating
+      })
+      avgReviewRating = Math.round(counter / netflixShow.reviews.length)
+    } else {
+      avgReviewRating = "No ratings yet."
+    }
+    return avgReviewRating
+  }
 
   const addNewReview = (props) => {
     fetch(`/api/v1/netflix_shows/${id}/reviews`, {
