@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import NetflixShowTile from './NetflixShowTile'
 import NetflixReviewTile from './NetflixReviewTile'
-import ReviewFormContainer from './NetflixFormContainer'
+import ReviewFormContainer from './ReviewFormContainer'
 
 const NetflixShowContainer = (props) => {
   const[netflixShow, setNetflixShow] = useState({})
@@ -82,17 +82,23 @@ const NetflixShowContainer = (props) => {
 
   return (
     <div>
-      <NetflixShowTile
-        id={netflixShow.id}
-        title={netflixShow.title}
-        genre={netflixShow.genre}
-        description={netflixShow.description}
-      />
-      <h3>Average Rating: {getAvgRating()}</h3>
-      <h3>Reviews: {netflixNoReviewMessage}</h3>
-      {netflixReviewArray}
-
-      <ReviewFormContainer addNewReview={addNewReview} />
+      <div>
+        <NetflixShowTile
+          id={netflixShow.id}
+          title={netflixShow.title}
+          genre={netflixShow.genre}
+          description={netflixShow.description}
+        />
+      </div>
+      <div>
+        <ReviewFormContainer 
+        addNewReview={addNewReview} />
+      </div>
+      <div>
+        <h3>Average Rating: {getAvgRating()}</h3>
+        <h3>Reviews: {netflixNoReviewMessage}</h3>
+        {netflixReviewArray}
+      </div>
     </div>
   )
 }

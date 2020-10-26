@@ -1,8 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
 
   def create
-    binding.pry
-    # look at params, get show object so that review can belong to a show
+    # render json: NetflixShow.find(params[:id]), serializer: NetflixShowSerializer
+    
     new_review = Review.new(review_params)
 
     if new_review.save
@@ -13,6 +13,6 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit()
+    params.require(:review).permit([:comment, :rating])
   end
 end
