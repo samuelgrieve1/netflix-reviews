@@ -6,7 +6,7 @@ import ReviewFormContainer from './ReviewFormContainer'
 
 const NetflixShowContainer = (props) => {
   const[netflixShow, setNetflixShow] = useState({})
-  const[reviews, setReviews] = useState({})
+  const[showReviews, setShowReviews] = useState([])
 
   useEffect(() => {
     let id = props.match.params.id
@@ -26,7 +26,7 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
       
-  }, []
+    }, []
   )
 
   const addNewReview = (formData) => {
@@ -49,11 +49,9 @@ const NetflixShowContainer = (props) => {
       }
     })
     .then(response => response.json())
-    .then(props => {
-      setReviews([
-        ...reviews,
-        props,
-      ]);
+    .then(body => {
+      debugger
+      setShowReviews([...showReviews, body]);
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
