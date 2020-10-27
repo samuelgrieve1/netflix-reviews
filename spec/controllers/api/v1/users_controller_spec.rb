@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
+  PROFILE_IMAGE1 = File.open(File.join(
+    Rails.root, '/public/images_seed/bruisedbananas.jpg'
+  ))
   let!(:user_1) { User.create(
     email: "first1@email.com", 
     password: "123456", 
     username: "Mad Ducks", 
     first_name: "Maddox", 
-    last_name: "Grey"
+    last_name: "Grey",
+    profile_photo: PROFILE_IMAGE1
   )}
   let!(:show_1) { NetflixShow.create(
     title: "The 100", 
@@ -29,6 +33,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(returned_response["first_name"]).to eq user_1.first_name
       expect(returned_response["last_name"]).to eq user_1.last_name
       expect(returned_response["email"]).to eq user_1.email
+      expect(returned_response["profile_photo"]["url"]).to eq user_1.profile_photo.url
 
       expect(returned_response["reviews"][0]["comment"]).to eq show_1.reviews[0]["comment"]
       expect(returned_response["reviews"][0]["rating"]).to eq show_1.reviews[0]["rating"]
