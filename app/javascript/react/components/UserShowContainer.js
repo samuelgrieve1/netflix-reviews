@@ -50,6 +50,7 @@ const UserShowContainer = (props) => {
           first_name={userShow.first_name}
           last_name={userShow.last_name}
           email={userShow.email}
+          profile_photo={userShow.profile_photo}
         />
       <h3>Reviews: {userNoReviewMessage}</h3>
       {userReviewArray}
