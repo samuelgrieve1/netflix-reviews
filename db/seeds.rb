@@ -17,8 +17,8 @@ user_3 = User.create(email: "first3@email.com", password: "123456", username: "L
 user_4 = User.create(email: "first4@email.com", password: "123456", username: "SAMTHEDJ", first_name: "Sam", last_name: "Grieve")
 user_5 = User.create(email: "first5@email.com", password: "123456", username: "Couch_Surfer_Bryan", first_name: "Bryan", last_name: "Alicea")
 
-review_1 = Review.create(user: user_1, netflix_show: show_1, comment: "Why'd they even come down to Earth?", rating: 3)
-review_2 = Review.create(user: user_2, netflix_show: show_1, comment: "Maybe if you paid attention Mad_Ducks you would know they were running out of oxygen", rating: 5)
-review_3 = Review.create(user: user_3, netflix_show: show_2, comment: "Pretty much just Steven Carell ruining a business for multiple seasons", rating: 5)
-review_4 = Review.create(user: user_4, netflix_show: show_2, comment: "Yo hit me up for better sound tracks next time", rating: 4)
-review_5 = Review.create(user: user_5, netflix_show: show_2, comment: "I watch this show at every house I stay at while I'm traveling", rating: 5)
+review_1 = Review.create(user: user_1, netflix_show: show_1, comment: "Why'd they even come down to Earth?", rating: 3, votes: 2)
+review_2 = Review.create(user: user_2, netflix_show: show_1, comment: "Maybe if you paid attention Mad_Ducks you would know they were running out of oxygen", rating: 5, votes: 6)
+review_3 = Review.create(user: user_3, netflix_show: show_2, comment: "Pretty much just Steven Carell ruining a business for multiple seasons", rating: 5, votes: 1)
+review_4 = Review.create(user: user_4, netflix_show: show_2, comment: "Yo hit me up for better sound tracks next time", rating: 4, votes: -3)
+review_5 = Review.create(user: user_5, netflix_show: show_2, comment: "I watch this show at every house I stay at while I'm traveling", rating: 5, votes: 0)

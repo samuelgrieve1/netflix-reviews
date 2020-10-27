@@ -14,7 +14,7 @@ const NetflixShowContainer = (props) => {
           return response
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Errror(errorMessage)
+            error = new Error(errorMessage)
           throw error
         }
       })
@@ -24,6 +24,31 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
+  const addVote = (votePayload) => {
+   let id = props.match.params.id
+    fetch(`/api/v1/netflix_shows/${id}`, {
+      method: 'POST',
+      body: JSON.stringify(votePayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      debugger
+      setVoteClickCount([
+        ...voteClickCounts,
+        body.voteClickCount])
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
   
   let netflixReviewArray = []
   let netflixNoReviewMessage = ""
@@ -34,6 +59,8 @@ const NetflixShowContainer = (props) => {
           key={review.id}
           comment={review.comment}
           rating={review.rating}
+          votes={review.votes}
+          addVote={addVote}
         />
       )
     })

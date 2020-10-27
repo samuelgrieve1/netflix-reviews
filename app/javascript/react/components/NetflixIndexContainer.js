@@ -23,7 +23,7 @@ const NetflixIndexContainer = (props) => {
       setShows(body)
     }).catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
-  
+
   let showtiles = shows.map((show) => {
     return(
       < NetflixTile

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_192455) do
+ActiveRecord::Schema.define(version: 2020_10_27_151037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_192455) do
     t.integer "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "votes"
     t.index ["netflix_show_id"], name: "index_reviews_on_netflix_show_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
