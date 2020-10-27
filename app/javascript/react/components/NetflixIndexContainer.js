@@ -28,6 +28,7 @@ const NetflixIndexContainer = (props) => {
     return(
       < NetflixTile
         key = {show.id}
+        id = {show.id}
         title = {show.title}
       />
     )
