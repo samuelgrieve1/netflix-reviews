@@ -8,7 +8,6 @@ class Api::V1::ReviewsController < ApiController
     new_review.user = current_user
 
     if new_review.save
-      binding.pry
       render json: new_review
     else
       render json: { errors: new_review.errors.full_messages }
