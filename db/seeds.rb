@@ -7,11 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first
 
 NetflixShow.destroy_all
+User.destroy_all
+Review.destroy_all
+
+PROFILE_IMAGE1 = File.open(File.join(
+    Rails.root, '/public/images_seed/bruisedbananas.jpg'
+  ))
 
 show_1 = NetflixShow.create(title: 'The 100', genre: 'Science Fiction', description: 'Humans killing each other with nukes all over the planet!')
 show_2 = NetflixShow.create(title: 'The Office', genre: 'Comedy')
 
-user_1 = User.create(email: "first1@email.com", password: "123456", username: "Mad Ducks", first_name: "Maddox", last_name: "Grey")
+user_1 = User.create(email: "first1@email.com", password: "123456", username: "Mad Ducks", first_name: "Maddox", last_name: "Grey", profile_photo: PROFILE_IMAGE1)
 user_2 = User.create(email: "first2@email.com", password: "123456", username: "Tedward", first_name: "Ted", last_name: "Francis")
 user_3 = User.create(email: "first3@email.com", password: "123456", username: "Luby_Writes_Ruby", first_name: "Eric", last_name: "Luby")
 user_4 = User.create(email: "first4@email.com", password: "123456", username: "SAMTHEDJ", first_name: "Sam", last_name: "Grieve")

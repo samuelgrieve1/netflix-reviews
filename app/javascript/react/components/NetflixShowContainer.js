@@ -91,14 +91,12 @@ const NetflixShowContainer = (props) => {
 
   return (
     <div>
-      <div>
-        <NetflixShowTile
-          id={netflixShow.id}
-          title={netflixShow.title}
-          genre={netflixShow.genre}
-          description={netflixShow.description}
-        />
-      </div>
+      <NetflixShowTile
+        id={netflixShow.id}
+        title={netflixShow.title}
+        genre={netflixShow.genre}
+        description={netflixShow.description}
+      />
       <div>
         {reviewForm}
       </div>
