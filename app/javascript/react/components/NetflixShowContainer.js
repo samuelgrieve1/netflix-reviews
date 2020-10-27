@@ -7,7 +7,7 @@ import ReviewFormContainer from './ReviewFormContainer'
 const NetflixShowContainer = (props) => {
   const[netflixShow, setNetflixShow] = useState({})
   const[showReviews, setShowReviews] = useState([])
-debugger
+
   useEffect(() => {
     let id = props.match.params.id
     fetch(`/api/v1/netflix_shows/${id}`)
@@ -22,10 +22,9 @@ debugger
       })
       .then(response => response.json())
       .then(body => {
-        setNetflixShow(body)
+        setNetflixShow(body)        
       })
-      .catch(error => console.error(`Error in fetch: ${error.message}`))
-      
+      .catch(error => console.error(`Error in fetch: ${error.message}`)) 
     }, []
   )
 
@@ -85,6 +84,11 @@ debugger
     return avgReviewRating
   }
 
+  let reviewForm
+  if (netflixShow.user_signed_in) {
+    reviewForm = <ReviewFormContainer addNewReview={addNewReview}/>
+  }
+
   return (
     <div>
       <div>
@@ -96,8 +100,7 @@ debugger
         />
       </div>
       <div>
-        <ReviewFormContainer 
-        addNewReview={addNewReview} />
+        {reviewForm}
       </div>
       <div>
         <h3>Average Rating: {getAvgRating()}</h3>
