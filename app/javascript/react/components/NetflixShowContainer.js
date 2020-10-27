@@ -25,35 +25,44 @@ const NetflixShowContainer = (props) => {
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  const addVote = (votePayload) => {
-   let id = props.match.params.id
-    fetch(`/api/v1/netflix_shows/${id}`, {
-      method: 'POST',
-      body: JSON.stringify(votePayload)
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      debugger
-      setVoteClickCount([
-        ...voteClickCounts,
-        body.voteClickCount])
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
+  
   
   let netflixReviewArray = []
   let netflixNoReviewMessage = ""
   if (netflixShow.reviews) {
     netflixReviewArray = netflixShow.reviews.map((review) => {
+
+      const addVote = (votePayload) => {
+        let id = review.id
+        fetch(`/api/v1/reviews/${id}`, {
+          method: 'PATCH',
+          credentials: "same-origin",
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(votePayload)
+        })
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          debugger
+          //  we should get back the netflix show with a review with new vote count
+          //  setNetflixShow([
+          //    ...voteClickCounts,
+          //    body.voteClickCount])
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+      }
+
       return(
         < NetflixReviewTile
           key={review.id}
