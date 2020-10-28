@@ -8,11 +8,6 @@ const ReviewFormContainer = (props) => {
     rating: "",
   });
 
-  const defaultFields = {
-    comment: '',
-    rating: ''
-  };
-
   const [errors, setErrors] = useState({})
   const handleChange = event => {
     setNewReview({
