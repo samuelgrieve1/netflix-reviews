@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_143351) do
     t.bigint "netflix_show_id", null: false
     t.string "comment", null: false
     t.integer "rating", null: false
+    t.integer "votes_total", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["netflix_show_id"], name: "index_reviews_on_netflix_show_id"
@@ -53,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_143351) do
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "review_id", null: false
-    t.integer "votes", default: 0, null: false
+    t.integer "user_vote_value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_votes_on_review_id"

@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      resources :netflix_shows, only: [:index, :show]
-      resources :reviews, only: [:update]
       resources :users, only: [:show]
+      resources :netflix_shows, only: [:index, :show] do
+        resources :reviews, only: [:create, :update] do
+            resources :votes, only: [:create, :update]
+        end
+      end
     end
   end
 end

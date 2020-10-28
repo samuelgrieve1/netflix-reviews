@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :netflix_show
+  has_many :votes
+  has_many :users, through: :votes
 
   validates :user, presence: true
   validates :netflix_show, presence: true

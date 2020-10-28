@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const NetflixReviewTile = (props) => {
   const [voteClickCount, setVoteClickCount] = useState(props.votes)
-
+  debugger
   const incrementCount = (event) => {
     event.preventDefault()
     props.addVote(1)

@@ -32,15 +32,13 @@ const NetflixShowContainer = (props) => {
   if (netflixShow.reviews) {
     netflixReviewArray = netflixShow.reviews.map((review) => {
 
-      const addVote = (votePayload) => {
-        debugger
-        let id = review.id
-        fetch(`/api/v1/reviews/${id}`, {
-          method: 'PATCH',
+      const addVote = (votePayload, requestMethod) => {
+        fetch(`/api/v1/netflix_shows/${netflixShow.id}/reviews/${review.id}/votes`, {
+          method: "POST",
           credentials: "same-origin",
           headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(votePayload)
         })
@@ -54,12 +52,11 @@ const NetflixShowContainer = (props) => {
           }
         })
         .then(response => response.json())
-        .then(body => {
-          debugger
+        .then(body => { 
           //  we should get back the netflix show with a review with new vote count
-          //  setNetflixShow([
-          //    ...voteClickCounts,
-          //    body.voteClickCount])
+          //  setNetflixShow([]
+          //    ...netflixShow,
+          //    body.voteClickCount)
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
       }
@@ -69,7 +66,7 @@ const NetflixShowContainer = (props) => {
           key={review.id}
           comment={review.comment}
           rating={review.rating}
-          votes={review.votes}
+          votes={review.votes_total}
           addVote={addVote}
         />
       )
@@ -91,7 +88,7 @@ const NetflixShowContainer = (props) => {
     }
     return avgReviewRating
   }
-
+  
   return (
     <div>
       <NetflixShowTile
