@@ -2,12 +2,10 @@ import React from 'react'
 
 const NetflixReviewTile = (props) => {
   return (
-    <ul>
-      <div className = 'callout'>
-        <li>{props.comment}</li>
-        <li>Rating: {props.rating}</li>
-      </div>
-    </ul>
+    <div className = 'callout'>
+      <p>{props.comment}</p>
+      <p>Rating: {props.rating}</p>
+    </div>
   )
 }
 

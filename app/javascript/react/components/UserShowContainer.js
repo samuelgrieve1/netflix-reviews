@@ -43,7 +43,8 @@ const UserShowContainer = (props) => {
   }
   
   return(
-    <div>
+    <div className='grid-container show-style'>
+      <div className='background-image-show'></div>
       <UserShowTile
           id={userShow.id}
           username={userShow.username}

@@ -15,14 +15,4 @@
  *= require foundation_and_overrides
 
  */
-.profile_photo {
-  max-width: 50px;
-  max-height: 50px;
-}
 
-.user_page_photo {
-  min-width: 20px;
-  min-height: 20px;
-  max-width: 50px;
-  max-height: 50px;
-}
