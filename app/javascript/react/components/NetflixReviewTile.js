@@ -5,16 +5,12 @@ const NetflixReviewTile = (props) => {
 
   const incrementCount = (event) => {
     event.preventDefault()
-    props.addVote(voteClickCount)
-    const newVoteClickCount = voteClickCount + 1
-    setVoteClickCount(newVoteClickCount)
+    props.addVote(1)
   }
 
   const decrementCount = (event) => {
     event.preventDefault()
-    props.addVote(voteClickCount)
-    const newVoteClickCount = voteClickCount - 1
-    setVoteClickCount(newVoteClickCount)
+    props.addVote(-1)
   }
 
   return (

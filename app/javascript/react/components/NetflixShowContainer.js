@@ -33,6 +33,7 @@ const NetflixShowContainer = (props) => {
     netflixReviewArray = netflixShow.reviews.map((review) => {
 
       const addVote = (votePayload) => {
+        debugger
         let id = review.id
         fetch(`/api/v1/reviews/${id}`, {
           method: 'PATCH',
