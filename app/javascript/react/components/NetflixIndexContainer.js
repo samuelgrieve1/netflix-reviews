@@ -23,19 +23,21 @@ const NetflixIndexContainer = (props) => {
       setShows(body)
     }).catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
   let avgReviewRating = ""
   const getAvgRating = () => {
-  if (shows.reviews) {
-    let counter = 0
-    shows.reviews.forEach((review) => {
-      counter += review.rating
-    })
-    avgReviewRating = Math.round(counter / shows.reviews.length)
-  } else {
-    avgReviewRating = "No ratings yet."
+    if (shows.reviews) {
+      let counter = 0
+      shows.reviews.forEach((review) => {
+        counter += review.rating
+      })
+      avgReviewRating = Math.round(counter / shows.reviews.length)
+    } else {
+      avgReviewRating = "No ratings yet."
+    }
+    return avgReviewRating
   }
-  return avgReviewRating
-}
+
   let showtiles = shows.map((show) => {
     return(
       < NetflixTile
@@ -48,7 +50,6 @@ const NetflixIndexContainer = (props) => {
       />
     )
   })
-
 
   return(
     <div className = 'grid-container'>

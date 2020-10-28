@@ -56,16 +56,19 @@ const NetflixShowContainer = (props) => {
   }
 
   return (
-    <div>
-      <NetflixShowTile
-        id={netflixShow.id}
-        title={netflixShow.title}
-        genre={netflixShow.genre}
-        description={netflixShow.description}
-      />
-      <h3>Average Rating: {getAvgRating()}</h3>
-      <h3>Reviews: {netflixNoReviewMessage}</h3>
-      {netflixReviewArray}
+    <div className='grid-container'>
+      <div className='background-image-show'></div>
+      <div className='show-style'>
+        <NetflixShowTile
+          id={netflixShow.id}
+          title={netflixShow.title}
+          genre={netflixShow.genre}
+          description={netflixShow.description}
+        />
+        <h4>Average Rating: {getAvgRating()}</h4>
+        <h4>Reviews: {netflixNoReviewMessage}</h4>
+        {netflixReviewArray}
+      </div>
     </div>
   )
 }
