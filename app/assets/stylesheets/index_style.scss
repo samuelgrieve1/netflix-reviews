@@ -15,6 +15,7 @@ body {
   position: absolute;
   left: 0;
   background-color: black;
+  z-index: -1;
 }
 
 .top-bar a {
@@ -30,8 +31,9 @@ body {
   list-style: none;
 }
 
-.show-callout {
-  color: white;
+table {
+  background-color: white;
+  opacity: 80%;
 }
 
 
