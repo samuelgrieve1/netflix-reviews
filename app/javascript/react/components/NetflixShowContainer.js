@@ -16,7 +16,7 @@ const NetflixShowContainer = (props) => {
           return response
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Errror(errorMessage)
+          error = new Error(errorMessage)
           throw error
         }
       })
@@ -70,20 +70,6 @@ const NetflixShowContainer = (props) => {
     netflixNoReviewMessage = "No reviews yet."
   }
 
-  let avgReviewRating = ""
-  const getAvgRating = () => {
-    if (netflixShow.reviews) {
-      let counter = 0
-      netflixShow.reviews.forEach((review) => {
-        counter += review.rating
-      })
-      avgReviewRating = Math.round(counter / netflixShow.reviews.length)
-    } else {
-      avgReviewRating = "No ratings yet."
-    }
-    return avgReviewRating
-  }
-
   let reviewForm
   if (netflixShow.user_signed_in) {
     reviewForm = <ReviewFormContainer addNewReview={addNewReview}/>
@@ -99,7 +85,7 @@ const NetflixShowContainer = (props) => {
           genre={netflixShow.genre}
           description={netflixShow.description}
         />
-        <h4>Average Rating: {getAvgRating()}</h4>
+        <h4>Average Rating: {netflixShow.average_rating}</h4>
         <h4>Reviews: {netflixNoReviewMessage}</h4>
         <div>
           {reviewForm}
