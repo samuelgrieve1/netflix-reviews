@@ -31,28 +31,30 @@ RSpec.describe Api::V1::NetflixShowsController, type: :controller do
         expect(response.content_type).to eq 'application/json'
     end
 
-    it 'should return the netflix show titles from the database' do
+    it 'should return the netflix show titles, genre and average rating from the database' do
       get :index 
         returned_response = JSON.parse(response.body)
-        
         expect(returned_response.length).to eq 2
-
+        
         expect(returned_response[0]["title"]).to eq show_1.title
+        expect(returned_response[0]["genre"]).to eq show_1.genre
+        expect(returned_response[0]["average_rating"].to_i).to eq show_1.average_rating
         expect(returned_response[1]["title"]).to eq show_2.title
+      end
     end
-  end
-
-  describe "GET#show" do
-    it "should return the title, genre and description of an individual show on its own show page" do
+    
+    describe "GET#show" do
+    it "should return the title, genre and description and average_rating of an individual show on its own show page" do
       get :show, params: {id: show_1.id}
       returned_response = JSON.parse(response.body)
-    
+      
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
   
       expect(returned_response["title"]).to eq show_1.title
       expect(returned_response["genre"]).to eq show_1.genre
       expect(returned_response["description"]).to eq show_1.description
+      expect(returned_response["average_rating"].to_i).to eq show_1.average_rating
 
       expect(returned_response["reviews"][0]["comment"]).to eq show_1.reviews[0]["comment"]
       expect(returned_response["reviews"][0]["rating"]).to eq show_1.reviews[0]["rating"]
