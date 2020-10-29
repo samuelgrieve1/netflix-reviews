@@ -42,20 +42,19 @@ const NetflixReviewTile = (props) => {
   if (props.currentUser){
     voteButtons = 
       <>
-        <button type="button" onClick={incrementCount}>Upvote</button>
-        <button type="button" onClick={decrementCount}>Downvote</button>
+        <button className ='button' type="button" onClick={incrementCount}>Upvote</button>
+        <button className ='button' type="button" onClick={decrementCount}>Downvote</button>
       </>
   }
 
   return (
-    <ul>
       <div className = 'callout'>
-        <li>{props.comment}</li>
-        <li>Rating: {props.rating}</li>
+        <p>{props.comment}</p>
+        Rating: {props.rating}
         <p>Votes: {votesTotal}</p>
         {voteButtons}
       </div>
-    </ul>
+
   )
 }
 
