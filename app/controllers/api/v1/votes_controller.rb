@@ -7,15 +7,7 @@ class Api::V1::VotesController < ApplicationController
     if vote.save
       review.votes_total += vote.user_vote_value
       review.save
-    else
-      #error handling
     end
-    render json: review, serializer: ReviewSerializer
-  end
-  
-  def update
-    review = Review.find(params[:id])
-    review.votes += params["_json"]
     render json: review, serializer: ReviewSerializer
   end
 end

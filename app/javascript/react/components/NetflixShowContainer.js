@@ -29,42 +29,15 @@ const NetflixShowContainer = (props) => {
   let netflixNoReviewMessage = ""
   if (netflixShow.reviews) {
     netflixReviewArray = netflixShow.reviews.map((review) => {
-
-      const addVote = (votePayload, requestMethod) => {
-        fetch(`/api/v1/netflix_shows/${netflixShow.id}/reviews/${review.id}/votes`, {
-          method: "POST",
-          credentials: "same-origin",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(votePayload)
-        })
-        .then(response => {
-          if (response.ok) {
-            return response;
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-            throw(error);
-          }
-        })
-        .then(response => response.json())
-        .then(body => { 
-          debugger
-          //  we should get back the netflix show with a review with new vote count
-          setNetflixShow(body.netflix_show)
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
-      }
-
       return(
         < NetflixReviewTile
           key={review.id}
+          id={review.id}
+          showid={netflixShow.id}
           comment={review.comment}
           rating={review.rating}
           votes={review.votes_total}
-          addVote={addVote}
+          currentUser={netflixShow.currentUser}
         />
       )
     })

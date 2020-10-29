@@ -35,6 +35,7 @@ const UserShowContainer = (props) => {
           comment={review.comment}
           rating={review.rating}
           show_title={review.netflix_show.title}
+          current_user={netflix_show.currentUser}
         />
       )
     })
