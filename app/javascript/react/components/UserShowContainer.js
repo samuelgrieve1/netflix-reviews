@@ -44,13 +44,15 @@ const UserShowContainer = (props) => {
   }
   
   return(
-    <div>
+    <div className='grid-container show-style'>
+      <div className='background-image-show'></div>
       <UserShowTile
           id={userShow.id}
           username={userShow.username}
           first_name={userShow.first_name}
           last_name={userShow.last_name}
           email={userShow.email}
+          profile_photo={userShow.profile_photo}
         />
       <h3>Reviews: {userNoReviewMessage}</h3>
       {userReviewArray}
