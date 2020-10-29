@@ -41,7 +41,7 @@ const UserShowContainer = (props) => {
   } else {
     userNoReviewMessage = "You have not posted any reviews yet."
   }
-  
+
   return(
     <div className='grid-container show-style'>
       <div className='background-image-show'></div>

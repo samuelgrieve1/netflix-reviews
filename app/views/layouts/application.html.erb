@@ -17,6 +17,7 @@
           <%- if current_user.profile_photo.url -%>
             <%= image_tag current_user.profile_photo.url, class: "profile_photo" %>
           <%- end -%>
+          <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
