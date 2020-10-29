@@ -3,7 +3,4 @@ class NetflixShowSerializer < ActiveModel::Serializer
 
   has_many :reviews
 
-  def review_average
-
-  end
 end

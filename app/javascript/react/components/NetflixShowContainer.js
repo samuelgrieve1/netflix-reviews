@@ -24,8 +24,6 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
-
-  
   
   let netflixReviewArray = []
   let netflixNoReviewMessage = ""
@@ -53,10 +51,9 @@ const NetflixShowContainer = (props) => {
         })
         .then(response => response.json())
         .then(body => { 
+          debugger
           //  we should get back the netflix show with a review with new vote count
-          //  setNetflixShow([]
-          //    ...netflixShow,
-          //    body.voteClickCount)
+          setNetflixShow(body.netflix_show)
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
       }

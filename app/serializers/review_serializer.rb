@@ -4,11 +4,7 @@ class ReviewSerializer < ActiveModel::Serializer
   belongs_to :user, if: :requestMethod
   belongs_to :netflix_show
   has_many :votes
-  
-  # def total_votes
-  #   binding.pry
-  #   votes += params["_json"]
-  # end
+
 
   def requestMethod
     # if (current_review.votes.users.includes(current_user))

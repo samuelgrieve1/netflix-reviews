@@ -4,5 +4,5 @@ class Vote < ApplicationRecord
 
   validates :user, presence: true
   validates :review, presence: true
-  validates :vote, presence: true
+  validates :user_vote_value, presence: true
 end
