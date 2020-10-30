@@ -5,8 +5,9 @@
 .background-image-show {
   background-image: url('/images/Netflix-Background.jpg');
   background-size: contain;
+  background-repeat: repeat;
   width: 100%;
-  height: 90vh;
+  height: 100%;
   opacity: 30%;
   position: absolute;
   left: 0;
@@ -14,6 +15,27 @@
   z-index: -1;
 }
 
+.background-image-white {
+  background-color: white;
+}
+
 .callout {
   opacity: 85%;
+}
+
+.button {
+  background-color: red;
+  color: white;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+button.button {
+  margin: 5px 5px 0px;
+}
+
+table {
+  margin-top: 20px;
 }

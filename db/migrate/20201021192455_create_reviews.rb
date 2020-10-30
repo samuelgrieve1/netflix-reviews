@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
 
       t.string :comment, null: false
       t.integer :rating, null: false
+      t.integer :votes_total, null: false, default: 0
       
       t.timestamps
     end

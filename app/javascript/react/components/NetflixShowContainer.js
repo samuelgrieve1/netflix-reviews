@@ -16,7 +16,7 @@ const NetflixShowContainer = (props) => {
           return response
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
+            error = new Error(errorMessage)
           throw error
         }
       })
@@ -26,30 +26,30 @@ const NetflixShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`)) 
     }, []
-  )
-
-  const addNewReview = (formData) => {
-    fetch(`/api/v1/netflix_shows/${props.match.params.id}/reviews`, {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      credentials: 'same-origin',
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
+    )
+    
+    const addNewReview = (formData) => {
+      fetch(`/api/v1/netflix_shows/${props.match.params.id}/reviews`, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        credentials: 'same-origin',
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
           error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setShowReviews([...showReviews, body]);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        setShowReviews([...showReviews, body]);
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -61,8 +61,12 @@ const NetflixShowContainer = (props) => {
       return(
         < NetflixReviewTile
           key={review.id}
+          id={review.id}
+          showid={netflixShow.id}
           comment={review.comment}
           rating={review.rating}
+          votes={review.votes_total}
+          currentUser={netflixShow.currentUser}
         />
       )
     })

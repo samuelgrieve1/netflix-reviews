@@ -1,5 +1,4 @@
 class Api::V1::ReviewsController < ApiController
-
   def create 
     show = NetflixShow.find(params[:netflix_show_id])
     new_review = Review.new(review_params)

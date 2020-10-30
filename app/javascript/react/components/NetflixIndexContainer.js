@@ -41,7 +41,6 @@ const NetflixIndexContainer = (props) => {
     <div className = 'grid-container'>
       <div className='background-image'></div>
       <div className='show-callout'>
-        <h3>Netflix Shows</h3>
         <table>
           <thead>
             <tr>
